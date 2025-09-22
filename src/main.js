@@ -17,6 +17,7 @@ import {
     Rating, Row, Select, SelectButton, Tag, Textarea, Toast,
     ToastService, Toolbar, Tooltip
 } from "primevue";
+import router from "./router.js";
 
 // noinspection JSCheckFunctionSignatures
 createApp(App)
@@ -49,4 +50,5 @@ createApp(App)
     .component('pv-toolbar', Toolbar)
     .component('pv-toast', Toast)
     .directive('tooltip', Tooltip)
+    .use(router)
     .mount('#app')
