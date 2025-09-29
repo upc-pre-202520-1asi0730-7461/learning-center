@@ -11,7 +11,8 @@
   };
   const items = [
     { label: 'option.home', to: '/home'},
-    { label: 'option.about', to: '/about'}
+    { label: 'option.about', to: '/about'},
+    { label: 'option.categories', to: '/publishing/categories'},
   ];
 </script>
 
