@@ -1,32 +1,48 @@
 {
   "categories": [
-    { "id":  1, "name":  "Vue"},
-    { "id":  2, "name":  "ASP.NET"},
-    {"id": 3, "name":  "CSharp"},
-    { "id": 4, "name":  "JavaScript"}
+    {
+      "id": 1,
+      "name": "Vue"
+    },
+    {
+      "id": 2,
+      "name": "ASP.NET"
+    },
+    {
+      "id": 3,
+      "name": "CSharp"
+    },
+    {
+      "id": 4,
+      "name": "JavaScript"
+    },
+    {
+      "id": 5,
+      "name": "Pyhton"
+    }
   ],
   "tutorials": [
     {
       "id": 1,
-        "title": "Learn Vue 3",
+      "title": "Learn Vue 3",
       "summary": "A comprehensive guide to mastering Vue 3.",
       "categoryId": 1
     },
     {
       "id": 2,
-        "title": "ASP.NET Core Basics",
+      "title": "ASP.NET Core Basics",
       "summary": "Getting started with ASP.NET Core development.",
       "categoryId": 2
     },
     {
       "id": 3,
-        "title": "C# for Beginners",
+      "title": "C# for Beginners",
       "summary": "An introduction to C# programming language.",
       "categoryId": 3
     },
     {
       "id": 4,
-        "title": "JavaScript Essentials",
+      "title": "JavaScript Essentials",
       "summary": "Learn the fundamentals of JavaScript programming.",
       "categoryId": 4
     }
