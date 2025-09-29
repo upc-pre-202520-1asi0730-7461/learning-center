@@ -1,8 +1,8 @@
 // Lazy-loaded components
-const categoryList = () => import('views/category-list.vue');
-const categoryForm = () => import('views/category-form.vue');
-const tutorialList = () => import('views/tutorial-list.vue');
-const tutorialForm = () => import('views/tutorial-form.vue');
+const categoryList = () => import('./views/category-list.vue');
+const categoryForm = () => import('./views/category-form.vue');
+const tutorialList = () => import('./views/tutorial-list.vue');
+const tutorialForm = () => import('./views/tutorial-form.vue');
 
 const publishingRoutes = [
     { path: 'categories',           name: 'publishing-categories',      component: categoryList, meta: { title: 'Categories' } },
