@@ -1,11 +1,11 @@
 <script setup>
-  import {useI18n} from "vue-i18n";
-  import {useRoute, useRouter} from "vue-router";
-  import usePublishingStore from "../../application/publishing.store.js";
-  import {computed, onMounted, ref} from "vue";
-  import {Category} from "../../domain/model/category.entity.js";
+import {useI18n} from "vue-i18n";
+import {useRoute, useRouter} from "vue-router";
+import usePublishingStore from "../../application/publishing.store.js";
+import {computed, onActivated, onMounted, ref} from "vue";
+import {Category} from "../../domain/model/category.entity.js";
 
-  const { t } = useI18n();
+const { t } = useI18n();
   const route = useRoute();
   const router = useRouter();
   const store = usePublishingStore();
@@ -13,9 +13,9 @@
   const form = ref({ name: '' });
   const isEdit = computed(() => !!route.params.id);
 
-  const getCategoryById = (id) => {
-    return store.categories.find(category => category.id === id);
-  }
+function getCategoryById(id) {
+  return new Category({...store.getCategoryById(id)});
+}
   onMounted(() => {
     console.log(route.params.id);
     if (isEdit.value) {
@@ -24,6 +24,7 @@
       if (category) form.value.name = category.name; else router.push({ name: 'publishing-categories' });
     }
   });
+
   const navigateBack = () => {
     router.push({ name: 'publishing-categories' });
   };
@@ -34,7 +35,7 @@
     });
     if (isEdit.value) updateCategory(category); else addCategory(category);
     navigateBack();
-  }
+  };
 </script>
 
 <template>
