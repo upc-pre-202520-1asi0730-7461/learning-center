@@ -25,7 +25,7 @@ const usePublishingStore = defineStore('publishing', () => {
         return publishingApi.getCategories().then(response => {
             categories.value = CategoryAssembler.toEntitiesFromResponse(response);
             categoriesLoaded.value = true;
-            console.log(categoriesLoaded.value);
+            console.log('categoriesLoaded', categoriesLoaded.value);
             console.log(categories.value);
         }).catch(error => {
             errors.value.push(error);
@@ -39,6 +39,11 @@ const usePublishingStore = defineStore('publishing', () => {
         }).catch(error => {
             errors.value.push(error);
         });
+    }
+
+    function getCategoryById(id) {
+        let idInt = parseInt(id);
+        return categories.value.find(category => category["id"] === idInt);
     }
 
     function addCategory(category) {
@@ -69,6 +74,11 @@ const usePublishingStore = defineStore('publishing', () => {
         }).catch(error => {
             errors.value.push(error);
         });
+    }
+
+    function getTutorialById(id) {
+        let idInt = parseInt(id);
+        return tutorials.value.find(tutorial => tutorial["id"] === idInt);
     }
 
     function addTutorial(tutorial) {
@@ -112,8 +122,10 @@ const usePublishingStore = defineStore('publishing', () => {
         fetchCategories,
         fetchTutorials,
         addCategory,
+        getCategoryById,
         updateCategory,
         deleteCategory,
+        getTutorialById,
         addTutorial,
         updateTutorial,
         deleteTutorial
