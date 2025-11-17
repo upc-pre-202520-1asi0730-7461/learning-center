@@ -7,6 +7,9 @@
 
   const { t } = useI18n();
   const drawer = ref(false);
+  /**
+   * Toggles the visibility of the drawer.
+   */
   const toggleDrawer = () => {
     drawer.value = !drawer.value;
   };

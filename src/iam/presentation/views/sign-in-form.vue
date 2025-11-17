@@ -13,6 +13,9 @@
     password: ""
   })
 
+  /**
+   * Performs the sign-in operation using the form data.
+   */
   function performSignIn() {
     let signInCommand = new SignInCommand(form);
     console.log(signInCommand);

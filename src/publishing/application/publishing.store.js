@@ -6,6 +6,10 @@ import {TutorialAssembler} from "../infrastructure/tutorial.assembler.js";
 
 const publishingApi = new PublishingApi();
 
+/**
+ * Pinia store for publishing functionality.
+ * Manages categories and tutorials data, including CRUD operations.
+ */
 const usePublishingStore = defineStore('publishing', () => {
     // State
     const categories  = ref([]);
@@ -21,6 +25,10 @@ const usePublishingStore = defineStore('publishing', () => {
         return tutorialsLoaded ? tutorials.value.length : 0;
     });
     // Actions
+    /**
+     * Fetches all categories from the API.
+     * @returns {Promise} A promise that resolves when categories are fetched.
+     */
     function fetchCategories() {
         return publishingApi.getCategories().then(response => {
             categories.value = CategoryAssembler.toEntitiesFromResponse(response);
@@ -32,6 +40,10 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Fetches all tutorials from the API.
+     * @returns {Promise} A promise that resolves when tutorials are fetched.
+     */
     function fetchTutorials() {
         return publishingApi.getTutorials().then(response => {
             tutorials.value = TutorialAssembler.toEntitiesFromResponse(response);
@@ -41,11 +53,20 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Gets a category by its ID.
+     * @param {string|number} id - The ID of the category.
+     * @returns {Category|null} The category entity or null if not found.
+     */
     function getCategoryById(id) {
         let idInt = parseInt(id);
         return categories.value.find(category => category["id"] === idInt);
     }
 
+    /**
+     * Adds a new category.
+     * @param {Category} category - The category to add.
+     */
     function addCategory(category) {
         publishingApi.createCategory(category).then(response => {
             const resource = response.data;
@@ -56,6 +77,10 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Updates an existing category.
+     * @param {Category} category - The category to update.
+     */
     function updateCategory(category) {
         publishingApi.updateCategory(category).then(response => {
             const resource = response.data;
@@ -67,6 +92,10 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Deletes a category.
+     * @param {Category} category - The category to delete.
+     */
     function deleteCategory(category) {
         publishingApi.deleteCategory(category.id).then(response => {
             const index = categories.value.findIndex(c => c["id"] === category.id);
@@ -76,11 +105,20 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Gets a tutorial by its ID.
+     * @param {string|number} id - The ID of the tutorial.
+     * @returns {Tutorial|null} The tutorial entity or null if not found.
+     */
     function getTutorialById(id) {
         let idInt = parseInt(id);
         return tutorials.value.find(tutorial => tutorial["id"] === idInt);
     }
 
+    /**
+     * Adds a new tutorial.
+     * @param {Tutorial} tutorial - The tutorial to add.
+     */
     function addTutorial(tutorial) {
         publishingApi.createTutorial(tutorial).then(response => {
             const resource = response.data;
@@ -91,6 +129,10 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Updates an existing tutorial.
+     * @param {Tutorial} tutorial - The tutorial to update.
+     */
     function updateTutorial(tutorial) {
         publishingApi.updateTutorial(tutorial).then(response => {
             const resource = response.data;
@@ -102,6 +144,10 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
+    /**
+     * Deletes a tutorial.
+     * @param {Tutorial} tutorial - The tutorial to delete.
+     */
     function deleteTutorial(tutorial) {
         publishingApi.deleteTutorial(tutorial.id).then(response => {
             const index = tutorials.value.findIndex(t => t["id"] === tutorial.id);

@@ -16,12 +16,23 @@
     if(!categoriesLoaded) fetchCategories();
     console.log("categoriesLoaded", categoriesLoaded);
   });
+  /**
+   * Navigates to the new category form.
+   */
   const navigateToNew = () => {
     router.push({ name: 'publishing-category-new' });
   }
+  /**
+   * Navigates to the edit form for a specific category.
+   * @param {string|number} id - The ID of the category to edit.
+   */
   const navigateToEdit = (id) => {
     router.push({ name: 'publishing-category-edit', params: { id } });
   }
+  /**
+   * Confirms deletion of a category.
+   * @param {Category} category - The category to delete.
+   */
   const confirmDelete = (category) => {
     confirm.require({
       message: t('categories.confirm-delete', { name: category.name }),

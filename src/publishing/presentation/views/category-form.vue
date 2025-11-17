@@ -13,6 +13,11 @@ const { t } = useI18n();
   const form = ref({ name: '' });
   const isEdit = computed(() => !!route.params.id);
 
+/**
+ * Retrieves a category by its ID from the store.
+ * @param {string|number} id - The ID of the category.
+ * @returns {Category} The category entity.
+ */
 function getCategoryById(id) {
   return new Category({...store.getCategoryById(id)});
 }
@@ -25,9 +30,15 @@ function getCategoryById(id) {
     }
   });
 
+  /**
+   * Navigates back to the categories list.
+   */
   const navigateBack = () => {
     router.push({ name: 'publishing-categories' });
   };
+  /**
+   * Saves the category, either adding a new one or updating an existing one.
+   */
   const saveCategory = () => {
     const category = new Category({
       id: isEdit.value ? route.params.id : null,

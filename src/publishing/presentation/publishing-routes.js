@@ -4,6 +4,11 @@ const categoryForm = () => import('./views/category-form.vue');
 const tutorialList = () => import('./views/tutorial-list.vue');
 const tutorialForm = () => import('./views/tutorial-form.vue');
 
+/**
+ * Array of routes for publishing functionality.
+ * Includes routes for categories and tutorials management.
+ * @type {Array<Object>}
+ */
 const publishingRoutes = [
     { path: 'categories',           name: 'publishing-categories',      component: categoryList, meta: { title: 'Categories' } },
     { path: 'categories/new',       name: 'publishing-category-new',    component: categoryForm, meta: { title: 'New Category' } },

@@ -1,12 +1,12 @@
 /**
- * Category Entity
- * @class
+ * Represents a category entity.
  */
 export class Category {
     /**
-     * Creates an instance of Category.
-     * @param id - Category ID
-     * @param name - Category Name
+     * Creates a new Category instance.
+     * @param {Object} params - The parameters object.
+     * @param {string|number|null} params.id - The unique identifier for the category.
+     * @param {string} params.name - The name of the category.
      */
     constructor({ id = null, name = ''}) {
         this.id = id;

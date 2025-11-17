@@ -12,6 +12,9 @@ const form = reactive({
   password: ""
 })
 
+/**
+ * Performs the sign-up operation using the form data.
+ */
 function performSignUp() {
   let signUpCommand = new SignUpCommand(form);
   console.log(signUpCommand);

@@ -20,6 +20,12 @@ const router = createRouter({
     routes: routes
 });
 
+/**
+ * Navigation guard to set the document title before each route change.
+ * @param {Object} to - The target route object.
+ * @param {Object} from - The current route object.
+ * @param {Function} next - Function to proceed to the next route.
+ */
 router.beforeEach((to, from, next) => {
     console.log(`Navigating from ${from.name} to ${to.name}`);
     let baseTitle = 'ACME Learning Center';

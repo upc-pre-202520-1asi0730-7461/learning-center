@@ -7,6 +7,10 @@ import {SignUpAssembler} from "../infrastructure/sign-up.assembler.js";
 
 const iamApi = new IamApi();
 
+/**
+ * Pinia store for IAM (Identity and Access Management) functionality.
+ * Manages user authentication, sign-in, sign-up, and user data.
+ */
 const useIamStore = defineStore('iam', () => {
     const users = ref([]);
     const errors = ref([]);
@@ -18,6 +22,11 @@ const useIamStore = defineStore('iam', () => {
         ? localStorage.getItem('token')
         : null);
 
+    /**
+     * Signs in a user with the provided credentials.
+     * @param {SignInCommand} signInCommand - The sign-in command containing username and password.
+     * @param {Object} router - The Vue router instance for navigation.
+     */
     function signIn(signInCommand, router) {
         console.log(signInCommand);
         iamApi.signIn(signInCommand).then((response) => {
@@ -47,6 +56,11 @@ const useIamStore = defineStore('iam', () => {
             });
     }
 
+    /**
+     * Signs up a new user with the provided credentials.
+     * @param {SignUpCommand} signUpCommand - The sign-up command containing username and password.
+     * @param {Object} router - The Vue router instance for navigation.
+     */
     function signUp(signUpCommand, router) {
         iamApi.signUp(signUpCommand).then((response) => {
             let signUpResource = SignUpAssembler.toResourceFromResponse(response);
@@ -67,6 +81,10 @@ const useIamStore = defineStore('iam', () => {
             });
     }
 
+    /**
+     * Signs out the current user.
+     * @param {Object} router - The Vue router instance for navigation.
+     */
     function signOut(router) {
         currentUsername.value = null;
         currentUserId.value = 0;
@@ -77,6 +95,9 @@ const useIamStore = defineStore('iam', () => {
         router.push({name: 'iam-sign-in'});
     }
 
+    /**
+     * Fetches the list of users from the API.
+     */
     function fetchUsers() {
         iamApi.getUsers().then((response) => {
             users.value = UserAssembler.toEntitiesFromResponse(response);

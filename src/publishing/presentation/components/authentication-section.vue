@@ -12,14 +12,23 @@ const {signOut} = store;
 let isSignedIn = computed(() => !!store.isSignedIn);
 let currentUsername = computed(() => store.currentUsername);
 
+/**
+ * Navigates to the sign-in page.
+ */
 function performSignIn() {
   router.push({name: 'iam-sign-in'});
 }
 
+/**
+ * Navigates to the sign-up page.
+ */
 function performSignUp() {
   router.push({name: 'iam-sign-up'});
 }
 
+/**
+ * Signs out the current user.
+ */
 function performSignOut() {
   signOut(router);
 }
